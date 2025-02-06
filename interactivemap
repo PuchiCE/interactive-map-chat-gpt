@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misiones de España en el Exterior</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([20, 10], 2);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        
+        var misiones = [
+            { nombre: "EUMAM-Mozambique", ubicacion: [-25.96, 32.58], fecha: "Noviembre - 2021", mando: "Unión Europea" },
+            { nombre: "Persistent Effort: Policía Aérea Reforzada", ubicacion: [42.7, 23.3], fecha: "Febrero - 2022", mando: "OTAN" },
+            { nombre: "Persistent Effort: Policía Aérea del Báltico", ubicacion: [56.9, 24.1], fecha: "Mayo - 2020", mando: "OTAN" },
+            { nombre: "EUTM RCA", ubicacion: [4.36, 18.56], fecha: "Julio - 2016", mando: "Unión Europea" },
+            { nombre: "EUTM-Somalia", ubicacion: [2.04, 45.34], fecha: "Enero - 2010", mando: "Unión Europea" },
+            { nombre: "Apoyo a Irak", ubicacion: [33.32, 44.42], fecha: "Octubre - 2014", mando: "OTAN" },
+            { nombre: "Destacamento Marfil (Senegal)", ubicacion: [14.7, -17.45], fecha: "Enero - 2013", mando: "Unión Europea" },
+            { nombre: "Atalanta", ubicacion: [0.0, 60.0], fecha: "Septiembre - 2008", mando: "Unión Europea" },
+            { nombre: "Persistent Effort: Apoyo a Turquía", ubicacion: [39.93, 32.86], fecha: "Septiembre - 2014", mando: "OTAN" },
+            { nombre: "EUFOR Althea BiH", ubicacion: [43.85, 18.36], fecha: "Diciembre - 2004", mando: "OTAN" },
+            { nombre: "FINUL (Líbano)", ubicacion: [33.85, 35.86], fecha: "Septiembre - 2006", mando: "ONU" },
+            { nombre: "ONU-Acuerdo de paz en Colombia", ubicacion: [4.71, -74.07], fecha: "Agosto - 2012", mando: "ONU" },
+            { nombre: "Despliegue en el Flanco Este", ubicacion: [56.95, 24.11], fecha: "Junio - 2017", mando: "OTAN" },
+            { nombre: "Sea Guardian", ubicacion: [36.0, -5.6], fecha: "Noviembre - 2016", mando: "OTAN" },
+            { nombre: "Diplomacia de Defensa en Golfo de Guinea", ubicacion: [5.6, -0.2], fecha: "Septiembre - 2014", mando: "España" }
+        ];
+
+        misiones.forEach(mision => {
+            L.marker(mision.ubicacion).addTo(map)
+                .bindPopup(`<b>${mision.nombre}</b><br>Fecha: ${mision.fecha}<br>Mando: ${mision.mando}`);
+        });
+    </script>
+</body>
+</html>
